@@ -106,7 +106,7 @@ class JSONToYAML():
                     self.update_object( json_data )
 
                     out_filename = output + os.path.sep + filename.rsplit( ".", 1 )[0] + ".yaml"
-                    out_string = yaml.dump( json_data, default_flow_style = False )
+                    out_string = yaml.dump(json_data, default_flow_style=False, width=float("inf"))
                     with open( out_filename, "w" ) as file:
                         file.write( out_string )
 
@@ -141,7 +141,7 @@ class JSONToYAML():
             else:
                 service_doc["paths"][uri]["post"] = self.generate_operation( uri, ACTION_RESPONSES, True )
 
-        out_string = yaml.dump( service_doc, default_flow_style = False )
+        out_string = yaml.dump(service_doc, default_flow_style=False, width=float("inf"))
         with open( service_file, "w" ) as file:
             file.write( out_string )
 
